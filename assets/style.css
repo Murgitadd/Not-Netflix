@@ -1,0 +1,22 @@
+body {
+    background-color: black;
+}
+.carousel {
+    width: 100%;
+}
+
+.navbar-brand, .up {
+    z-index: 10 !important;
+}
+
+.banners {
+    height: 100vh !important;
+    z-index: 1 !important;
+    width: auto;    
+}
+
+.carousel {
+    background-image: url('https://media4.giphy.com/media/326d5iOUoYY8N6uFPm/giphy.gif?cid=6c09b9526vn36ji2f8eibt0itck14h7fzdrffms5ey4x4fe2&ep=v1_gifs_search&rid=giphy.gif&ct=g');
+    background-repeat: no-repeat;
+    background-size: cover;
+}

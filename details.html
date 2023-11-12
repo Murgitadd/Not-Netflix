@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/details.css">
+    <title>Show Details</title>
+</head>
+<body>
+    <div class="container">
+        <div class="details-container" id="details-container">
+            <div class="row row-cols-1 row-cols-md-4 g-4 card-container">
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const params = new URLSearchParams(window.location.search);
+            const showId = params.get('id');
+            if (showId) {
+  
+                fetch(`https://api.tvmaze.com/shows/${showId}`)
+                    .then(response => response.json())
+                    .then(showDetails => {
+
+                        const detailsContainer = document.getElementById('details-container');
+                        const imageUrl = showDetails.image.original;
+
+                        detailsContainer.innerHTML = `
+                            <div class="col">
+                                <div class="blur-background" style="background-image: url(${imageUrl})"></div>
+                                
+                            <div class="d-flex">
+                                <div class="card shadow-lg text-bg-dark main-card">
+                                <img src="${showDetails.image.original}" alt="${showDetails.name}" class="main-img">
+                                
+</div>
+<div class="detail-data d-flex flex-column">
+    <h1 class="fs-1 text-white text-center my-5">${showDetails.name}</h1>
+    <h2 class="text-white">Story</h2>
+                            <p class="text-white">${showDetails.summary}</p> 
+                            <hr/>
+                            <h2 class="text-white">Details</h2>
+                            <span class="point">IDMB: ${showDetails.rating.average}</span>
+                            <span class="duration">Duration: <span class="badge text-bg-dark">${showDetails.runtime}</span> min</span>
+                            <span class="date">Premiered: <span class="badge text-bg-dark">${showDetails.premiered ? new Date(showDetails.premiered).toLocaleDateString() : 'N/A'}</span></span>
+                            <span class="country">Country: <span class="badge text-bg-dark">${showDetails.network.country.name}</span></span>
+                            <span class="genre">Genres: <span class="badge text-bg-dark">${showDetails.genres[0]}</span> <span class="badge text-bg-dark">${showDetails.genres[1]}</span> <span class="badge text-bg-dark">${showDetails.genres[2]}</span></span>
+    </div>   
+                            </div>    
+                            </div>
+                        `;
+                    })
+            } 
+        });
+    </script>
+</body>
+</html>

@@ -1,22 +1,105 @@
 body {
-    background-color: black;
+    background-color: rgb(36,37,38);
 }
-.carousel {
+
+.big-carousel {
     width: 100%;
 }
 
+.mini-carousel {
+    z-index: 2;
+    width: 100%;
+    top: 425px;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
 .navbar-brand, .up {
-    z-index: 10 !important;
+    z-index: 9;
 }
 
 .banners {
-    height: 100vh !important;
-    z-index: 1 !important;
+    height: 700px;
+    z-index: 1;
     width: auto;    
 }
 
-.carousel {
-    background-image: url('https://media4.giphy.com/media/326d5iOUoYY8N6uFPm/giphy.gif?cid=6c09b9526vn36ji2f8eibt0itck14h7fzdrffms5ey4x4fe2&ep=v1_gifs_search&rid=giphy.gif&ct=g');
+.mini-banners {
+    height: 200px;
+    z-index: 2;
+    width: auto;
+}
+
+.big-carousel {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.big-cap {
+    left: 0%;
+    width: 30%;
+    height: auto;
+    bottom: 30%;
+    background-color: rgba(0, 0, 0, 0.615);
+}
+
+.carousel-item {
+    position: relative;
+}
+
+.blur-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(5px);
+    z-index: -1;
+}
+
+.card {
+    width: 300px;
+    height: 450px;
+}
+
+.card-img-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)); 
+    color: white;
+    padding: 1rem; 
+    box-sizing: border-box;
+    padding-bottom: 40px;
+}
+
+.main {
+    padding-bottom: 30%;
+}
+
+.nopad {
+    height: 20px ;
+}
+
+.show-sum {
+    visibility: hidden;
+    overflow: hidden;
+
+  }
+
+  .card:hover .show-sum {
+    visibility: visible;
+}
+
+
+.card:hover .card-img-overlay {
+    background-color: rgba(0, 0, 0, 0.755);
+}
+
+
+  
